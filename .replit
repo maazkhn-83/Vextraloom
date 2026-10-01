@@ -1,0 +1,19 @@
+modules = ["nodejs-20"]
+run = "npm run dev"
+
+[nix]
+channel = "stable-24_05"
+
+# Development preview: Vite (5173) is shown on the Replit webview.
+[[ports]]
+localPort = 5173
+externalPort = 80
+
+[[ports]]
+localPort = 3001
+externalPort = 3001
+
+[deployment]
+build = ["sh", "-c", "npm install && npm run build"]
+run = ["sh", "-c", "NODE_ENV=production npm run start"]
+deploymentTarget = "cloudrun"
